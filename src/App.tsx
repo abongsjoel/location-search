@@ -1,5 +1,6 @@
 import LocationSearch from "./components/LocationSearch";
 import Map from "./components/Map";
+import type { Place } from "../api/Place";
 
 function App() {
   return (
