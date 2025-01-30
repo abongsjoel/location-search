@@ -1,3 +1,4 @@
+import type { Place } from "./Place";
 interface SearchResponse {
   features: {
     geometry: {
@@ -16,5 +17,12 @@ export const search = async (term: string) => {
   );
   const data: SearchResponse = await res.json();
 
-  console.log(data);
+  const places: Place[] = data.features.map((feature) => ({
+    id: feature.properties.place_id,
+    name: feature.properties.display_name,
+    longitude: feature.geometry.coordinates[0],
+    latitude: feature.geometry.coordinates[1],
+  }));
+
+  return places;
 };
