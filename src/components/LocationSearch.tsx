@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Place } from "../api/Place";
+import { search } from "../api/search";
 
 interface LocationSearchProps {
   onPlaceClick: (place: Place) => void;
@@ -13,6 +14,7 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
     e.preventDefault();
 
     console.log({ term });
+    await search(term);
   };
 
   return (
