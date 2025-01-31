@@ -17,14 +17,12 @@ export default function Map({ place }: MapProps) {
     if (mapRef.current && place) {
       console.log("Got in here");
       mapRef.current.flyTo([place.latitude, place.longitude], 9);
-      //   mapRef.current.setView([place.latitude, place.longitude], 13);
     }
   }, [place]);
 
   return (
     <MapContainer
       ref={mapRef}
-      //   center={[40.7, -74]}
       center={[0, 0]}
       zoom={2}
       scrollWheelZoom
