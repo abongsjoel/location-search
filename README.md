@@ -4,6 +4,10 @@ A simple application that allows user to search for any location in the world an
 
 ![screenshot](../main/screenshot.png)
 
+## Live Demo
+
+- [Visit Page](https://location-search-kohl.vercel.app/)
+
 ## Built With
 
 - Vite
