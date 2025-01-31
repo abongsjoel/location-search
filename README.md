@@ -103,9 +103,9 @@ npm run format
 
 ## Built With
 
-- Create React App
+- Vite
 - React
-- JavaScript
+- TypeScript
 - Tailwindcss
 
 ## Author
