@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import type { Map as LeafletMap } from "leaflet";
+import type { Map as LeafletMap, LatLngBoundsExpression } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 import type { Place } from "../api/Place";
@@ -9,6 +9,11 @@ import "leaflet/dist/leaflet.css";
 interface MapProps {
   place: Place | null;
 }
+
+const maxBounds: LatLngBoundsExpression = [
+  [-90, -180],
+  [90, 180],
+];
 
 export default function Map({ place }: MapProps) {
   const mapRef = useRef<LeafletMap | null>(null);
@@ -26,6 +31,8 @@ export default function Map({ place }: MapProps) {
       center={[0, 0]}
       zoom={3}
       scrollWheelZoom
+      minZoom={3}
+      maxBounds={maxBounds}
       className="h-full"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
