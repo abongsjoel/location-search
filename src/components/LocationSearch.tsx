@@ -20,20 +20,26 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <label htmlFor="term" className="font-bold">
-          Search
+          Search Location
         </label>
         <input
           className="border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 px-4 py-2 w-full"
           type="text"
           id="term"
+          placeholder="Enter a location"
           value={term}
           onChange={(e) => setTerm(e.target.value)}
         />
+        <div className="flex justify-end">
+          <button className="bg-blue-500 text-xs text-white font-bold py-2 px-4 rounded">
+            Search
+          </button>
+        </div>
       </form>
 
-      <h1 className="font-bold mt-6">Found Locations</h1>
+      <h1 className="font-bold mt-6">Locations Found</h1>
       <div className="grid grid-cols-[1fr_40px] gap-2 mt-2 items-center">
         {places.map((place) => (
           <Fragment key={place.id}>
