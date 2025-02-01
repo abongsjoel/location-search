@@ -1,17 +1,33 @@
 import { useEffect, useRef } from "react";
-import type { Map as LeafletMap } from "leaflet";
+import type { Map as LeafletMap, LatLngBoundsExpression } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 
 import type { Place } from "../api/Place";
 
 import "leaflet/dist/leaflet.css";
 
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
 interface MapProps {
   place: Place | null;
 }
 
+const maxBounds: LatLngBoundsExpression = [
+  [-90, -180],
+  [90, 180],
+];
+
 export default function Map({ place }: MapProps) {
   const mapRef = useRef<LeafletMap | null>(null);
+
+  const DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+  });
+
+  L.Marker.prototype.options.icon = DefaultIcon;
 
   useEffect(() => {
     if (mapRef.current && place) {
@@ -23,9 +39,11 @@ export default function Map({ place }: MapProps) {
   return (
     <MapContainer
       ref={mapRef}
-      center={[0, 0]}
-      zoom={2}
+      center={[45, 0]}
+      zoom={3}
       scrollWheelZoom
+      minZoom={3}
+      maxBounds={maxBounds}
       className="h-full"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
