@@ -28,7 +28,7 @@ export default function Map({ place }: MapProps) {
   return (
     <MapContainer
       ref={mapRef}
-      center={[0, 0]}
+      center={[45, 0]}
       zoom={3}
       scrollWheelZoom
       minZoom={3}
