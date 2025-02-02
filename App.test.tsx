@@ -2,22 +2,15 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import App from "./src/App";
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom/vitest";
 
 describe("App component", () => {
-  //   it("renders LocationSearch component", () => {
-  //     render(<App />);
-  //     expect(
-  //       screen.getByPlaceholderText(/Enter a location/i)
-  //     ).toBeInTheDocument();
-  //   });
+  render(<App />);
   it("renders LocationSearch component", () => {
-    render(<App />);
     expect(screen.getByTestId("location-search")).toBeInTheDocument();
   });
 
   it("renders Map component", () => {
-    render(<App />);
     expect(screen.getByRole("link", { name: "Leaflet" })).toBeInTheDocument();
   });
 });
