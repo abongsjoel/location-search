@@ -27,7 +27,7 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
   };
 
   return (
-    <div>
+    <div data-testid="location-search">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <label htmlFor="term" className="font-bold">
           Search Location

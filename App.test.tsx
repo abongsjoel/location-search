@@ -5,15 +5,19 @@ import App from "./src/App";
 import "@testing-library/jest-dom";
 
 describe("App component", () => {
+  //   it("renders LocationSearch component", () => {
+  //     render(<App />);
+  //     expect(
+  //       screen.getByPlaceholderText(/Enter a location/i)
+  //     ).toBeInTheDocument();
+  //   });
   it("renders LocationSearch component", () => {
     render(<App />);
-    expect(
-      screen.getByPlaceholderText(/Enter a location/i)
-    ).toBeInTheDocument();
+    expect(screen.getByTestId("location-search")).toBeInTheDocument();
   });
 
-  //   it("renders Map component", () => {
-  //     render(<App />);
-  //     expect(screen.getByTestId("map-component")).toBeInTheDocument();
-  //   });
+  it("renders Map component", () => {
+    render(<App />);
+    expect(screen.getByRole("link", { name: "Leaflet" })).toBeInTheDocument();
+  });
 });

@@ -45,6 +45,7 @@ export default function Map({ place }: MapProps) {
       minZoom={3}
       maxBounds={maxBounds}
       className="h-full"
+      data-testid="my-map"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {place && (
