@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import userEvent from "@testing-library/user-event";
 import LocationSearch from "./LocationSearch";
 import { search } from "../api/search.ts";
@@ -21,6 +21,10 @@ vi.mock("../api/search.ts", () => {
 describe("LocationSearch component", () => {
   const onPlaceClick = vi.fn();
   render(<LocationSearch onPlaceClick={onPlaceClick} />);
+
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
 
   it("renders titles", () => {
     expect(screen.getByText(/Search location/i)).toBeInTheDocument();
