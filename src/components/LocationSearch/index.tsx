@@ -11,9 +11,11 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
   const [term, setTerm] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [places, setPlaces] = useState<Place[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     const results = await search(term);
 
     if (results.length !== 0) {
@@ -23,6 +25,7 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
     } else {
       setError("No results found");
     }
+    setLoading(false);
   };
 
   return (
@@ -40,8 +43,15 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
           onChange={(e) => setTerm(e.target.value)}
         />
         <div className="flex justify-end">
-          <button className="bg-green-500 text-xs text-white font-bold py-2 px-4 rounded">
-            Search
+          <button
+            className={` text-xs text-white font-bold py-2 px-4 rounded ${
+              loading || !term
+                ? "cursor-not-allowed bg-gray-500"
+                : "bg-green-500"
+            }`}
+            disabled={loading}
+          >
+            {loading ? "Searching..." : "Search"}
           </button>
         </div>
       </form>
