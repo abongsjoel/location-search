@@ -3,7 +3,7 @@ import type { Map as LeafletMap, LatLngBoundsExpression } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 
-import type { Place } from "../api/Place";
+import type { Place } from "../../api/Place";
 
 import "leaflet/dist/leaflet.css";
 
@@ -45,6 +45,7 @@ export default function Map({ place }: MapProps) {
       minZoom={3}
       maxBounds={maxBounds}
       className="h-full"
+      data-testid="my-map"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {place && (

@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 
-import type { Place } from "../api/Place";
-import { search } from "../api/search";
+import type { Place } from "../../api/Place";
+import { search } from "../../api/search";
 
 interface LocationSearchProps {
   onPlaceClick: (place: Place) => void;
@@ -14,7 +14,6 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const results = await search(term);
 
     if (results.length !== 0) {
@@ -27,7 +26,7 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
   };
 
   return (
-    <div>
+    <div data-testid="location-search">
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <label htmlFor="term" className="font-bold">
           Search Location
