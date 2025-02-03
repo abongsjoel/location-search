@@ -1,10 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, afterEach } from "vitest";
 import userEvent from "@testing-library/user-event";
+
 import LocationSearch from "./index";
 import { search } from "../../api/search.ts";
-import "@testing-library/jest-dom/vitest";
 import { places } from "../../constants/index.ts";
+
+import "@testing-library/jest-dom/vitest";
 
 const mocks = vi.hoisted(() => {
   return {
@@ -20,18 +22,19 @@ vi.mock("../../api/search.ts", () => {
 
 describe("LocationSearch component", () => {
   const onPlaceClick = vi.fn();
-  render(<LocationSearch onPlaceClick={onPlaceClick} />);
 
   afterEach(() => {
     vi.resetAllMocks();
   });
 
   it("renders titles", () => {
+    render(<LocationSearch onPlaceClick={onPlaceClick} />);
     expect(screen.getByText(/Search location/i)).toBeInTheDocument();
     expect(screen.getByText(/Locations Found/i)).toBeInTheDocument();
   });
 
   it("renders search input and button", () => {
+    render(<LocationSearch onPlaceClick={onPlaceClick} />);
     expect(
       screen.getByPlaceholderText(/Enter a location/i)
     ).toBeInTheDocument();
@@ -40,6 +43,7 @@ describe("LocationSearch component", () => {
 
   it("get location list when user enters a location", async () => {
     vi.mocked(search).mockResolvedValue(places);
+    render(<LocationSearch onPlaceClick={onPlaceClick} />);
 
     const input = screen.getByRole("textbox", { name: /search location/i });
     const button = screen.getByRole("button", { name: /search/i });
@@ -58,6 +62,7 @@ describe("LocationSearch component", () => {
 
   it("call onPlaceClick when user clicks on 'Go' button", async () => {
     vi.mocked(search).mockResolvedValue(places);
+    render(<LocationSearch onPlaceClick={onPlaceClick} />);
 
     const input = screen.getByRole("textbox", { name: /search location/i });
     const button = screen.getByRole("button", { name: /search/i });

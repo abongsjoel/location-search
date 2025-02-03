@@ -1,5 +1,5 @@
 import type { Place } from "./Place";
-interface SearchResponse {
+export interface SearchResponse {
   features: {
     geometry: {
       coordinates: number[];

@@ -1,4 +1,5 @@
-import { Place } from "../api/Place";
+import type { Place } from "../api/Place";
+import type { SearchResponse } from "../api/search";
 
 export const places: Place[] = [
   {
@@ -13,22 +14,27 @@ export const places: Place[] = [
     longitude: 33.6480425,
     latitude: 1.769132,
   },
-  {
-    id: 38108392,
-    name: "Akum, Kalaki, Eastern Region, Uganda",
-    longitude: 33.2985305,
-    latitude: 2.0058826,
-  },
-  {
-    id: 38186831,
-    name: "Akum, Kumi, Eastern Region, Uganda",
-    longitude: 33.9,
-    latitude: 1.466667,
-  },
-  {
-    id: 38981289,
-    name: "Akum, Amuria, Eastern Region, Uganda",
-    longitude: 33.6903101,
-    latitude: 2.1005852,
-  },
 ];
+
+export const searchResponse: SearchResponse = {
+  features: [
+    {
+      geometry: {
+        coordinates: [10.156404, 5.887687],
+      },
+      properties: {
+        place_id: 35564783,
+        display_name: "Akum, Santa, Mezam, Northwest, Cameroon",
+      },
+    },
+    {
+      geometry: {
+        coordinates: [33.6480425, 1.769132],
+      },
+      properties: {
+        place_id: 38593976,
+        display_name: "Akum, Soroti City, Eastern Region, Uganda",
+      },
+    },
+  ],
+};
