@@ -14,7 +14,6 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const results = await search(term);
 
     if (results.length !== 0) {
