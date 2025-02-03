@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import Map from "./Map";
-import { Place } from "../api/Place";
+
+import Map from "./index";
+import { Place } from "../../api/Place";
+
 import "@testing-library/jest-dom/vitest";
 
 describe("Map Component", () => {

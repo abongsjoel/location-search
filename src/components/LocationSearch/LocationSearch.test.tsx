@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, afterEach } from "vitest";
 import userEvent from "@testing-library/user-event";
-import LocationSearch from "./LocationSearch";
-import { search } from "../api/search.ts";
+import LocationSearch from "./index";
+import { search } from "../../api/search.ts";
 import "@testing-library/jest-dom/vitest";
-import { places } from "../constants/index.ts";
+import { places } from "../../constants/index.ts";
 
 const mocks = vi.hoisted(() => {
   return {
@@ -12,7 +12,7 @@ const mocks = vi.hoisted(() => {
   };
 });
 
-vi.mock("../api/search.ts", () => {
+vi.mock("../../api/search.ts", () => {
   return {
     search: mocks.search,
   };

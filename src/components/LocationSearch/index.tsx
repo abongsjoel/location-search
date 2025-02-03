@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 
-import type { Place } from "../api/Place";
-import { search } from "../api/search";
+import type { Place } from "../../api/Place";
+import { search } from "../../api/search";
 
 interface LocationSearchProps {
   onPlaceClick: (place: Place) => void;
