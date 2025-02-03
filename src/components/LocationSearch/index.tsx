@@ -46,27 +46,31 @@ export default function LocationSearch({ onPlaceClick }: LocationSearchProps) {
         </div>
       </form>
 
-      <h1 className="font-bold mt-6">Locations Found</h1>
       {error ? (
         <p className="text-sm text-red-500 py-4">
           No results found for <b>"{term}"</b>. Please check your spelling and
           try again{" "}
         </p>
       ) : (
-        <div className="grid grid-cols-[1fr_40px] gap-2 mt-2 items-center">
-          {places.map((place) => (
-            <Fragment key={place.id}>
-              <p className="text-sm">{place.name}</p>
-              <button
-                className="bg-blue-500 text-xs text-white font-bold py-1 px-1 rounded"
-                onClick={() => onPlaceClick(place)}
-              >
-                Go
-              </button>
-              <div className="border-b w-full col-span-2" />
-            </Fragment>
-          ))}
-        </div>
+        places.length > 0 && (
+          <>
+            <h1 className="font-bold mt-6">Locations Found</h1>
+            <div className="grid grid-cols-[1fr_40px] gap-2 mt-2 items-center">
+              {places.map((place) => (
+                <Fragment key={place.id}>
+                  <p className="text-sm">{place.name}</p>
+                  <button
+                    className="bg-blue-500 text-xs text-white font-bold py-1 px-1 rounded"
+                    onClick={() => onPlaceClick(place)}
+                  >
+                    Go
+                  </button>
+                  <div className="border-b w-full col-span-2" />
+                </Fragment>
+              ))}
+            </div>
+          </>
+        )
       )}
     </div>
   );

@@ -27,14 +27,9 @@ describe("LocationSearch component", () => {
     vi.resetAllMocks();
   });
 
-  it("renders titles", () => {
-    render(<LocationSearch onPlaceClick={onPlaceClick} />);
-    expect(screen.getByText(/Search location/i)).toBeInTheDocument();
-    expect(screen.getByText(/Locations Found/i)).toBeInTheDocument();
-  });
-
   it("renders search input and button", () => {
     render(<LocationSearch onPlaceClick={onPlaceClick} />);
+    expect(screen.getByText(/Search location/i)).toBeInTheDocument();
     expect(
       screen.getByPlaceholderText(/Enter a location/i)
     ).toBeInTheDocument();
@@ -51,6 +46,7 @@ describe("LocationSearch component", () => {
     await userEvent.type(input, "Akum");
     await userEvent.click(button);
 
+    expect(screen.getByText(/Locations Found/i)).toBeInTheDocument();
     expect(screen.getAllByRole("button", { name: /go/i })).toHaveLength(
       places.length
     );
